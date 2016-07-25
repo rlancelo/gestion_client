@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:metadata>
+  <f:event type="preRenderView" listener="#{userController.loanClients}"/>
+</f:metadata>
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Liste des clients</title>
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:form>
+		<h1> Liste </h1>
+		<h:dataTable value="#{userController.clients}" var="cli" styleClass="table" headerClass="table-header" rowClasses="table-row">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				#{cli.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nom</f:facet>
+				#{cli.nom}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Prenom</f:facet>
+				#{cli.prenom}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+				#{cli.email}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Action</f:facet>
+				
+				<h:commandLink value="Update"
+							action="#{userController.redirectForUpdateClient(cli)}"/>
+						|
+	
+						
+				<h:commandLink value="Delete"
+							onclick="if (!confirm('Are you sure you want to delete this client?')) return false"
+							action="#{userController.deleteClient(cli)}"/>
+			</h:column>
+			
+			
+		</h:dataTable>
+		<br/><br/><br/><br/>
+		<h:commandLink value="Ajouter un client" action="ajoutClient.xhtml"/>
+	</h:form>
+</h:body>
+</html>

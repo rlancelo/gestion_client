@@ -1,0 +1,25 @@
+@CHARSET "ISO-8859-1";
+
+.table{
+	border: 2px solid gray;
+}
+
+h1{
+	color : blue;
+}
+
+.table-header{
+	background-color: bleu;
+	border-bottom: 6px solid gray;
+	border-top: 6px solid gray;
+}
+
+.table-row:nth-child(odd){
+	background-color: white;
+	color: black;
+}
+.table-row:nth-child(even){
+	color: white;
+	background-color: black;
+}
+
